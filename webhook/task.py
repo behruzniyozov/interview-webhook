@@ -10,7 +10,7 @@ from starlette.responses import JSONResponse
 PART_2_CODE = None
 API_ENDPOINT = "https://test.icorp.uz/interview.php"
 app = FastAPI()
-
+#  FastAPI
 @app.post("/webhook")
 @app.get("/webhook")
 async def webhook_listener(request: Request):
@@ -34,11 +34,13 @@ async def webhook_listener(request: Request):
     print(f"[Server] Extracted Part 2 Code: {PART_2_CODE}")
     return {"status": "ok"}
 
+#  Run Server
 def run_server():
     print("[Server] Starting Uvicorn server...")
     uvicorn.run(app, host="0.0.0.0", port=5001, log_level="info")
 
 
+#  Run Client
 def run_client():
     global PART_2_CODE
     
@@ -125,6 +127,7 @@ def run_client():
         print(f"[Client] ERROR during final GET request: {e}")
 
 
+#  Main
 if __name__ == "__main__":
     server_thread = threading.Thread(target=run_server, daemon=True)
     server_thread.start()
